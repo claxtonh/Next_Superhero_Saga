@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Comic Book Super Heros</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+  <!--CSS External Link-->
+  <link rel="stylesheet" type="text/css" href="cascadestyle.css">
+
+</head>
+
+<body>
+  <!-- Navigation Section -->
+  <div class="navigation">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" style="background-color: #0BADA6;" href="index.html">| Home | </a>
+      <button class="navbar-toggler  border border-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Comic Publishers
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="Marvel.html">Marvel</a>
+              <a class="dropdown-item" href="DC.html">DC</a>
+              <a class="dropdown-item" href="Image.html">Image</a>
+              <a class="dropdown-item" href="Dark Hourse.html">Dark Hourse</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Scatter.html">Scatter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Bar.html">Bar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="table.html">Table</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- Content Section -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-md-12">
+        <!-- Left box  -->
+        <div class="box">
+          <h3 class="title">Super Heros Breakout by Gender</h3>
+          <hr>
+          <img src="assets\Gender.png" alt="RWE Logo">
+        <hr>
+          <style>
+              .bar {
+                  fill: rgb(22, 230, 101);
+              }
+          </style>
+          <script src="https://d3js.org/d3.v4.min.js"></script>
+      <body>
+      <svg width="600" height="500"></svg>
+      <script>
+      
+          var svg = d3.select("svg"),
+              margin = 200,
+              width = svg.attr("width") - margin,
+              height = svg.attr("height") - margin
+      
+          svg.append("text")
+             .attr("transform", "translate(100,0)")
+             .attr("x", 50)
+             .attr("y", 50)
+             .attr("font-size", "24px")
+             .attr("stroke" , "white")
+             .text("XYZ Superhero data")
+      
+          var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+              yScale = d3.scaleLinear().range([height, 0]);
+      
+          var g = svg.append("g")
+                     .attr("transform", "translate(" + 100 + "," + 100 + ")");
+      
+          d3.csv("testdata.csv", function(error, data) {
+              if (error) {
+                  throw error;
+              }
+      
+              xScale.domain(data.map(function(d) { return d.year; }));
+              yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+      
+              g.append("g")
+               .attr("transform", "translate(0," + height + ")")
+               .call(d3.axisBottom(xScale))
+               .append("text")
+               .attr("y", height - 250)
+               .attr("x", width - 100)
+               .attr("text-anchor", "end")
+               .attr("stroke", "white")
+               .text("Power Type");
+      
+              g.append("g")
+               .call(d3.axisLeft(yScale).tickFormat(function(d){
+                   return "$" + d;
+               })
+               .ticks(10))
+               .append("text")
+               .attr("transform", "rotate(-90)")
+               .attr("y", 6)
+               .attr("dy", "-5.1em")
+               .attr("text-anchor", "end")
+               .attr("stroke", "white")
+               .text("Power Level");
+      
+              g.selectAll(".bar")
+               .data(data)
+               .enter().append("rect")
+               .attr("class", "bar")
+               .attr("x", function(d) { return xScale(d.year); })
+               .attr("y", function(d) { return yScale(d.value); })
+               .attr("width", xScale.bandwidth())
+               .attr("height", function(d) { return height - yScale(d.value); });
+          });
+      </script>
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer">Copyright &copy; AbbVie INC </div>
+  </footer>
+
+  <!-- Bootstrap  -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+
+<!----!doctype html>
+<html>
+<head>
+    <style>
+        .bar {
+            fill: rgb(22, 230, 101);
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+<body>
+<svg width="600" height="500"></svg>
+<script>
+
+    var svg = d3.select("svg"),
+        margin = 200,
+        width = svg.attr("width") - margin,
+        height = svg.attr("height") - margin
+
+    svg.append("text")
+       .attr("transform", "translate(100,0)")
+       .attr("x", 50)
+       .attr("y", 50)
+       .attr("font-size", "24px")
+       .attr("stroke" , "white")
+       .text("XYZ Superhero data")
+
+    var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+        yScale = d3.scaleLinear().range([height, 0]);
+
+    var g = svg.append("g")
+               .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+    d3.csv("testdata.csv", function(error, data) {
+        if (error) {
+            throw error;
+        }
+
+        xScale.domain(data.map(function(d) { return d.year; }));
+        yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale))
+         .append("text")
+         .attr("y", height - 250)
+         .attr("x", width - 100)
+         .attr("text-anchor", "end")
+         .attr("stroke", "white")
+         .text("Power Type");
+
+        g.append("g")
+         .call(d3.axisLeft(yScale).tickFormat(function(d){
+             return "$" + d;
+         })
+         .ticks(10))
+         .append("text")
+         .attr("transform", "rotate(-90)")
+         .attr("y", 6)
+         .attr("dy", "-5.1em")
+         .attr("text-anchor", "end")
+         .attr("stroke", "white")
+         .text("Power Level");
+
+        g.selectAll(".bar")
+         .data(data)
+         .enter().append("rect")
+         .attr("class", "bar")
+         .attr("x", function(d) { return xScale(d.year); })
+         .attr("y", function(d) { return yScale(d.value); })
+         .attr("width", xScale.bandwidth())
+         .attr("height", function(d) { return height - yScale(d.value); });
+    });
+</script>
+</body>
+</html>!-->
+
+</html>
