@@ -78,7 +78,11 @@ yText
 
 
   var scatdata = d3.select("#scatter")
-  
+  //var arrName =[]
+  //var arrheight = []
+  //var arrweight = []
+  //var dict = {"abbr":[], "X":[], "Y":[]}
+  var heroes = []
   d3.json(`/MarvelSuperHeroes`).then((data) => {
       console.log(data);
       d3.entries(data).forEach((result)=>{
@@ -95,10 +99,17 @@ yText
               weight = prop.value
             
           })
-          console.log(`${name} ${height} ${weight}`)
+          //console.log(`${name} ${height} ${weight}`)
+          //arrName.push(name)
+          //dict["abbr"].push(name)
+          //dict["X"].push(height)
+          //dict["Y"].push(weight)
+          heroes.push({"abbr":name, "X":height, "Y":weight})
           
         })
       })
+      visualize(heroes)
+      console.log(heroes)
     });  
 //d3.json("/MarvelSuperHeroes").then(function(data) {
 //  visualize(data);
@@ -147,7 +158,6 @@ function visualize(theData) {
   xMinMax();
   yMinMax();
 
-
   var xScale = d3
     .scaleLinear()
     .domain([xMin, xMax])
@@ -191,7 +201,7 @@ function visualize(theData) {
     })
     .attr("r", circRadius)
     .attr("class", function(d) {
-      return "stateCircle " + d.abbr;
+      return "stateCircle " + d["abbr"];
     })
 
     .on("mouseover", function(d) {
@@ -206,7 +216,7 @@ function visualize(theData) {
   theCircles
     .append("text")
     .text(function(d) {
-      return d.abbr;
+      return d["abbr"];
     })
     .attr("dx", function(d) {
       return xScale(d[curX]);
@@ -219,11 +229,11 @@ function visualize(theData) {
     .attr("class", "stateText")
     .on("mouseover", function(d) {
       toolTip.show(d);
-      d3.select("." + d.abbr).style("stroke", "#323232");
+      d3.select("." + d["abbr"]).style("stroke", "#323232");
     })
     .on("mouseout", function(d) {
       toolTip.hide(d);
-      d3.select("." + d.abbr).style("stroke", "#e3e3e3");
+      d3.select("." + d["abbr"]).style("stroke", "#e3e3e3");
     });
 
 
@@ -280,19 +290,7 @@ function visualize(theData) {
             })
             .duration(300);
         });
-
-        // We need change the location of the state texts, too.
-        d3.selectAll(".stateText").each(function() {
-          // We give each state text the same motion tween as the matching circle.
-          d3
-            .select(this)
-            .transition()
-            .attr("dy", function(d) {
-              return yScale(d[curY]) + circRadius / 3;
-            })
-            .duration(300);
-        });
-        labelChange(axis, self);
       }
     }
   })};
+  
