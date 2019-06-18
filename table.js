@@ -14,7 +14,7 @@ var resetbtn = d3.select("#reset-btn");
 var columns = ["Name", "Start_Date", "End_Date", "Description"]
 
 //var populate = (dataInput) => {
-
+var tdata = d3.select(tbody)
 //d3.json(`http://127.0.0.1:5000/MarvelEvents`).then((data) => {
 d3.json(`/MarvelEvents`).then((data) => {
     console.log(data);
@@ -35,6 +35,11 @@ d3.json(`/MarvelEvents`).then((data) => {
             end_date = prop.value
         })
         console.log(`${name} ${desc} ${start_date} ${end_date}`)
+        var row = tbody.append("tr");
+        row.append("td").text(`${name}`)
+        row.append("td").text(`${start_date}`)
+        row.append("td").text(`${end_date}`)
+        row.append("td").text(`${desc}`)
       })
     });
     //d3.entries(metaData).forEach((component) => {
