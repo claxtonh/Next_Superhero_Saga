@@ -91,7 +91,7 @@
       
           var g = svg.append("g")
                      .attr("transform", "translate(" + 100 + "," + 100 + ")");
-      
+/*   
           d3.csv("testdata.csv", function(error, data) {
               if (error) {
                   throw error;
@@ -131,7 +131,7 @@
                .attr("y", function(d) { return yScale(d.value); })
                .attr("width", xScale.bandwidth())
                .attr("height", function(d) { return height - yScale(d.value); });
-          });
+          });*/
       </script>
   <!-- Footer Section -->
   <footer>
@@ -145,6 +145,8 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="Bar.js"></script>
 </body>
 
 

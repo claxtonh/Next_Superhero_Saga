@@ -74,9 +74,35 @@ yText
   .attr("class", "aText inactive y")
   .text("Superhero Y axis");
 
-d3.json("/MarvelSuperHeroes").then(function(data) {
-  visualize(data);
-});
+
+
+
+  var scatdata = d3.select("#scatter")
+  
+  d3.json(`/MarvelSuperHeroes`).then((data) => {
+      console.log(data);
+      d3.entries(data).forEach((result)=>{
+        d3.entries(result.value).forEach((Hero)=>{
+          var name = ""
+          var height = ""
+          var weight = ""
+          d3.entries(Hero.value).forEach((prop)=>{
+            if (prop.key == "SuperHero Name")
+              name = prop.value
+            else if (prop.key == "Height")
+              height = prop.value
+            else if (prop.key == "Weight")
+              weight = prop.value
+            
+          })
+          console.log(`${name} ${height} ${weight}`)
+          
+        })
+      })
+    });  
+//d3.json("/MarvelSuperHeroes").then(function(data) {
+//  visualize(data);
+//});
 
 function visualize(theData) {
   
