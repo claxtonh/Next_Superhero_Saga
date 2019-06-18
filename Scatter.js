@@ -74,7 +74,7 @@ yText
   .attr("class", "aText inactive y")
   .text("Superhero Y axis");
 
-d3.csv("/testdata.csv").then(function(data) {
+d3.json("/MarvelSuperHeroes").then(function(data) {
   visualize(data);
 });
 

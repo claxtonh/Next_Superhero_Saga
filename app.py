@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import send_file
 from flask_pymongo import PyMongo
 
 #Create Flask App
@@ -93,17 +94,19 @@ def get_all_Marvel_Events():
   
   return jsonify({'result' : output})
 
-'''
-@app.route('/star', methods=['POST'])
-def add_star():
-  star = mongo.db.stars
-  name = request.json['name']
-  distance = request.json['distance']
-  star_id = star.insert({'name': name, 'distance': distance})
-  new_star = star.find_one({'_id': star_id })
-  output = {'name' : new_star['name'], 'distance' : new_star['distance']}
-  return jsonify({'result' : output}) """
-'''
+@app.route('/<path>', methods=['GET'])
+@app.route('/assets/<path>', methods=['GET'])
+def present_table(path):
+  print(path)
+  if "css" in path:
+    return send_file(path, mimetype='text/css')  
+  if "png" in path:
+    return send_file('assets/' + path, mimetype='image/png')
+  else:
+    f=open(path)
+    return f.read()
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
