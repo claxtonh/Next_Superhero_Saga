@@ -98,6 +98,8 @@ def get_all_Marvel_Events():
 @app.route('/assets/<path>', methods=['GET'])
 def present_table(path):
   print(path)
+  if "favicon" in path:
+    return send_file('assets/Marvel.png', mimetype='image/png')      
   if "css" in path:
     return send_file(path, mimetype='text/css')  
   if "png" in path:
@@ -106,6 +108,10 @@ def present_table(path):
     f=open(path)
     return f.read()
 
+@app.route('/', methods=['GET'])
+def main():
+  f=open("index.html")
+  return f.read()
 
 
 if __name__ == '__main__':
