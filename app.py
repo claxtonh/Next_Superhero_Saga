@@ -72,6 +72,7 @@ def get_all_Marvel_superheroes():
           
       output.append(obj)
       print(obj)
+  
     
   return jsonify({'result' : output})
 

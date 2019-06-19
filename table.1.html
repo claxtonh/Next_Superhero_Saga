@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Comic Book Super Heros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+
   <!--CSS External Link-->
   <link rel="stylesheet" type="text/css" href="cascadestyle.css">
+
 </head>
+
 <body>
   <!-- Navigation Section -->
   <div class="navigation">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" style="background-color: #0BADA6;" href="index.html">| Home | </a>
+      <a class="navbar-brand" style="background-color: rgb(180, 52, 52);" href="index.html">| Home | </a>
       <button class="navbar-toggler  border border-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,6 +48,7 @@
           <li class="nav-item">
             <a class="nav-link" href="table.html">Table</a>
           </li>
+
         </ul>
       </div>
     </nav>
@@ -53,25 +59,70 @@
       <div class="col-lg-7 col-md-12">
         <!-- Left box  -->
         <div class="box">
-          <h3 class="title">Super Heros Breakout by Gender</h3>
+          <h3 class="title">Table Breakout of SuperPowers</h3>
           <hr>
-          <img src="assets\Gender.png" alt="RWE Logo">
-        <hr>
-          <style>
-              .bar {
-                  fill: rgb(22, 230, 101);
-              }
-          </style>
-          <script src="https://d3js.org/d3.v4.min.js"></script>
-      <body>
-      <svg width="600" height="500"></svg>
-      <script>
-      
-      </script>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row margin-top-50">
+          <div class="col-md-2">
+            <aside class="filters">
+              <div class="panel panel-default">
+                <div class="panel-heading" style="font-family: 'Michroma', sans-serif;">Filter Search</div>
+                <div class="panel-body">
+                  <form>
+                    <div class="form-group">
+                      <ul class="list-group" id="filters" >
+                        <li class="filter list-group-item" style="background-color: white;">
+                          <!-- Date piece input -->
+                          <label for="date">Enter a Date</label>
+                          <input class="form-control" id="datetime" type="text" placeholder="yyyy/mm/dd">
+                        </li>
+                        <li class="filter list-group-item" style="background-color:white;">
+                          <!-- City piece input -->
+                          <label for="Name">Enter a Event</label>
+                          <input class="form-control" id="city" type="text" placeholder="Event Name">
+                        </li>
+                      </ul>
+                    </div>
+                    <button id="filter-btn" type="submit" class="btn btn-default btn-lg btn-block">Filter Table</button>
+  
+                    <button id="reset-btn" type="reset" class="btn btn-default btn-lg btn-block">Reset Table</button>
+                  </form>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="col-md-10">
+            <div id="table-area" class="">
+              <table id="ufo-table" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="table-head">Super Power Name</th>
+                    <th class="table-head">Accelerated Healing</th>
+                    <th class="table-head">Flight</th>
+                    <th class="table-head">Super Strength</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer" style="text-align: center;">
+        <span class="bottom"  style="font-family: 'Michroma', sans-serif;">Copyright © Data Science 2019</span>
+      </footer>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Footer Section -->
   <footer>
-    <div class="footer">Copyright &copy; AbbVie INC </div>
+    <div class="footer">Copyright &copy; Data Dump </div>
   </footer>
+
   <!-- Bootstrap  -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -79,9 +130,8 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-    <script src="Bar.js"></script>
-</body>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="table.1.js"></script>
+  </body>
 
 </html>
