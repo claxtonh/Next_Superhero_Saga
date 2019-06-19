@@ -1,9 +1,30 @@
+/*
+//svg container
+var svgHeight = 1000;
+var svgWidth = 1000;
+
+//margins
+var margin = {
+    top: 20,
+    right: 20,
+    bottom: 20,
+    left: 20
+};
+
+// char area minus margins
+var chartHeight = svgHeight - margin.top -margin.bottom;
+var chartWidth = svgWidth - margin.left - margin.right;
+*/
+
+
 //scatter Plot
-var width = parseInt(d3.select("#scatter").style("width"));
-var height = width - width / 3.9;
+//var width = parseInt(d3.select("#scatter").style("width"));
+//var height = width - width / 3.9;
+var width = 1000
+var height = 1000
 var margin = 20;
 var labelArea = 110;
-var tPadBot = 40;
+var tPadBot = 40;  // Means Title Padding.  
 var tPadLeft = 40;
 var svg = d3
   .select("#scatter")
@@ -12,6 +33,8 @@ var svg = d3
   .attr("height", height)
   .attr("class", "chart");
 
+//var chartHeight = height - margin - margin - labelArea;
+//var chartWidth = Width - margin - margin - labelArea;
 
 var circRadius;
 function crGet() {
@@ -42,10 +65,10 @@ xTextRefresh();
 xText
   .append("text")
   .attr("y", -26)
-  .attr("data-name", "superherox")
+  .attr("data-name", "Superhero Height")
   .attr("data-axis", "x")
   .attr("class", "aText active x")
-  .text("SuperheroX");
+  .text("Superhero Height");
 
 
 var leftTextX = margin + tPadLeft;
@@ -69,10 +92,10 @@ yTextRefresh();
 yText
   .append("text")
   .attr("y", 26)
-  .attr("data-name", "superheroy")
+  .attr("data-name", "Superhero Weight")
   .attr("data-axis", "y")
   .attr("class", "aText inactive y")
-  .text("Superhero Y axis");
+  .text("Superhero Weight");
 
 
 
