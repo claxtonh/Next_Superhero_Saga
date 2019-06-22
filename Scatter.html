@@ -11,12 +11,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
 
+  
   <!--CSS External Link-->
   <link rel="stylesheet" type="text/css" href="cascadestyle.css">
 
 </head>
 
 <body>
+  <!-- Install CDN for chart.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>  
+
   <!-- Navigation Section -->
   <div class="navigation">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -40,7 +44,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Scatter.html">Size vs Strength</a>
+            <a class="nav-link" href="Bar.html">SuperHero Gender Breakout</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="table.1.html">SuperHero Powers</a>
@@ -55,41 +59,23 @@
   </div>
   <!-- Content Section -->
   <div class="container">
-    <div class="row">
-      <div class="col-lg-7 col-md-12">
-        <!-- Left box  -->
-        <div class="box">
-          <h3 class="title">Super Hero Height vs Weight</h3>
-          <hr>
-          <img src="assets\tall and fat.png" alt="RWE Logo">
-        <hr>
-        </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-md-12">
-                <h1>Scatter Plot Space</h1>
-            <div class="row">
-              <div class="col-xs-12  col-md-9">
-                <div id="scatter">
-                  <!-- We append our chart here. -->
-                </div>
+      <div class="row">
+        <div class="col-lg-7 col-md-12">
+          <!-- Left box  -->
+          <div class="box">
+            <div class="container">
+              <div class="row">
+              <div class="row">
+                <div class="col-xs-12  col-md-9">
+                  <div id="scatter">
+                      <canvas id="myChart" width="400" height="400"></canvas>
+              <div class="row">
+                  <div class="text">
+                    <h2>The bigger they are, the harder they fall</h2>
+                    <p>Turns out, this trope isn't always the case.  Most superheroes cluster around being average height or weight, with more variety found on the weight side.  However, we see superheroes at the extremes, either super tall or super heavy. But we don't have many superheroes that fall in both categories. </p>
+                  </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xs-12  col-md-9">
-                <div class="article">
-                  <h2>The bigger they are, the harder they fall</h2>
-                  <p>Turns out, this trope isn't always the case.  Most superheroes cluster around being average height or weight, with more variety found on the weight side.  However, we see superheroes at the extremes, either super tall or super heavy. But we don't have many superheroes that fall in both categories. </p>
-        
-                  <p></p>
-        
-                  <p></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-  </div>
   <!-- Footer Section -->
   <footer>
     <div class="footer">Copyright &copy; Dip & Dots INC </div>
@@ -103,7 +89,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="Scatter.js"></script>
+  <script src="Scatter.3.js"></script>
+  
 </body>
 
 </html>

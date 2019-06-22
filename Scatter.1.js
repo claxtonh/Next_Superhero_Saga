@@ -11,7 +11,7 @@ var margin = {
 };
 
 // char area minus margins
-var chartHeight = svgHeight - margin.top -margin.bottom;
+var chartHeight = svgHeight - margin.top - margin.bottom;
 var chartWidth = svgWidth - margin.left - margin.right;
 
 console.log(chartHeight);
@@ -61,16 +61,51 @@ var scatdata = d3.select("#scatter")
       })
       //visualize(heroes)
       console.log(heroes)
-    });  
+    
+  
+      var curX = "X";
+      var curY = "Y";
+    
+      
+    console.log(d3.extent(heroes, d => d[curY]))
+    console.log(d3.extent(heroes, d => d[curX]))
 
- 
+    var xMin;
+    var xMax;
+    var yMin;
+    var yMax;
+  
+    function xMinMax() {
+      xMin = d3.min(heroes, function(d) {
+        return parseFloat(d[curX]) * 0.90;
+      });
+      xMax = d3.max(heroes, function(d) {
+        return parseFloat(d[curX]) * 1.10;
+      });
+    }
+    function yMinMax() {
+      yMin = d3.min(heroes, function(d) {
+        return parseFloat(d[curY]) * 0.90;
+      });
+  
+      yMax = d3.max(heroes, function(d) {
+        return parseFloat(d[curY]) * 1.10;
+      });
+    }
+    xMinMax();
+    yMinMax();
 
+console.log(`YMin = ${yMin}, YMax= ${yMax}, XMin = ${xMin}, XMax= ${xMax}`);
+
+
+
+    
     var yScale = d3.scaleLinear()
-    .domain(d3.extent(heroes, d => d[X]))
-    .range([0, chartHeight]);
+    .domain([yMin, yMax])
+    .range([chartHeight, 0]);
 
     var xScale = d3.scaleLinear()
-    .domain(d3.extent(heroes, d => d[Y]))
+    .domain([xMin, xMax])
     .range([0, chartWidth]);
 
     // create axes    
@@ -80,11 +115,12 @@ var scatdata = d3.select("#scatter")
     
     // set x to the bottom of the chart
     chartGroup.append("g")
-    .attr("transform", `translate(0, ${chartHeight})`)
+    .attr("transform", `translate(${margin.left}, ${margin.top} + ${chartHeight})`)
     .call(xAxis);
 
     // set y to the left of the chart
     chartGroup.append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`)
     .call(yAxis);
     
 
@@ -94,13 +130,14 @@ var scatdata = d3.select("#scatter")
     .enter()   // because there are no circles in the html, all of them will be created
     .append("circle")
     .classed(".stateCircle", true)
-    .attr("cx", d => xScale(d[X]))
-    .attr("cy", d => yScale(d[Y]))
+    .attr("cx", d => xScale(d[curX]))
+    .attr("cy", d => yScale(d[curY]))
     .attr("r", 10)
     .attr("fill", "blue")
     .attr("opacity", ".5")
-    .text(d => d[abbr]);
+    .text(d => d["abbr"]);
 
+  });  
 
 
 

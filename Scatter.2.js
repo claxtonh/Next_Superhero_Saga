@@ -25,7 +25,7 @@ var height = 1000
 var margin = 20;
 var labelArea = 110;
 var tPadBot = 40;  // Means Title Padding.  
-var tPadLeft = 40;
+var tPadLeft = 40; // Means Title Padding
 var svg = d3
   .select("#scatter")
   .append("svg")
@@ -189,11 +189,11 @@ function visualize(theData) {
   var xScale = d3
     .scaleLinear()
     .domain([xMin, xMax])
-    .range([margin + margin +labelArea, width - margin - margin]);
+    .range([0, chartWidth]);
   var yScale = d3
     .scaleLinear()
     .domain([yMin, yMax])
-    .range([height - margin - margin - labelArea, margin]);
+    .range([0, chartHeight]);
   //create the axes  
   var xAxis = d3.axisBottom(xScale);
   var yAxis = d3.axisLeft(yScale);
@@ -265,7 +265,7 @@ function visualize(theData) {
       d3.select("." + d["abbr"]).style("stroke", "#e3e3e3");
     });
 
-    d3.selectAll("text").style("fill", "green");
+  d3.selectAll("text").style("fill", "green");
 
   d3.selectAll(".aText").on("click", function() {
     var self = d3.select(this);
